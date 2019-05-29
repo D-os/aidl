@@ -104,7 +104,7 @@ const ValidatableType* TypeNamespace::GetReturnType(
   const ValidatableType* return_type = GetValidatableType(raw_type, &error_msg,
                                                           interface);
   if (return_type == nullptr) {
-    LOG(ERROR) << StringPrintf("In file %s line %d return type %s:\n    ",
+    LOG(ERROR) << StringPrintf("%s:%d: return type %s:\t",
                                filename.c_str(), raw_type.GetLine(),
                                raw_type.ToString().c_str())
                << error_msg;
@@ -118,7 +118,7 @@ const ValidatableType* TypeNamespace::GetArgType(
     const AidlArgument& a, int arg_index, const string& filename,
     const AidlInterface& interface) const {
   string error_prefix = StringPrintf(
-      "In file %s line %d parameter %s (argument %d):\n    ",
+      "%s:%d: parameter %s (argument %d):\t",
       filename.c_str(), a.GetLine(), a.GetName().c_str(), arg_index);
 
   // check the arg type

@@ -583,7 +583,7 @@ const ValidatableType* TypeNamespace::GetArgType(const AidlArgument& a,
     const std::string& filename,
     const AidlInterface& interface) const {
   const string error_prefix = StringPrintf(
-      "In file %s line %d parameter %s (%d):\n    ",
+      "%s:%d: parameter %s (%d):\t",
       filename.c_str(), a.GetLine(), a.GetName().c_str(), arg_index);
 
   // check that the name doesn't match a keyword
