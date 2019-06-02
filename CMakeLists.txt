@@ -39,15 +39,19 @@ add_library(aidl-common STATIC
   "docs/constants.md"
 )
 target_compile_options(aidl-common PRIVATE
-# Tragically, the code is riddled with unused parameters.
--Wno-unused-parameter
-# yacc dumps a lot of code *just in case*.
--Wno-unused-function
--Wno-unneeded-internal-declaration
-# yacc is a tool from a more civilized age.
--Wno-deprecated-register
-# yacc also has a habit of using char* over const char*.
--Wno-writable-strings
+  # Tragically, the code is riddled with unused parameters.
+  -Wno-unused-parameter
+  # yacc dumps a lot of code *just in case*.
+  -Wno-unused-function
+  -Wno-unneeded-internal-declaration
+  # yacc is a tool from a more civilized age.
+  -Wno-deprecated-register
+  # yacc also has a habit of using char* over const char*.
+  -Wno-writable-strings
+)
+target_compile_definitions(aidl-common PRIVATE
+  # Make the parsing errors more helpful
+  YYERROR_VERBOSE
 )
 target_link_libraries(aidl-common base cutils)
 
@@ -61,7 +65,7 @@ add_executable(aidl-cpp
 )
 target_link_libraries(aidl-cpp aidl-common base)
 
-
+# tests
 add_executable(aidl_unittests
   "aidl_unittest.cpp"
   "ast_cpp_unittest.cpp"
