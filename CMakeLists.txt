@@ -48,6 +48,8 @@ target_compile_options(aidl-common PRIVATE
   -Wno-deprecated-register
   # yacc also has a habit of using char* over const char*.
   -Wno-writable-strings
+  # size_t also changed a bit
+  -Wno-sign-compare
 )
 target_compile_definitions(aidl-common PRIVATE
   # Make the parsing errors more helpful
