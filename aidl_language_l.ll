@@ -6,6 +6,13 @@
 #include "aidl_language_y.hpp"
 
 #define YY_USER_ACTION yylloc->columns(yyleng);
+
+#ifndef YYSTYPE
+# define YYSTYPE yy::parser::semantic_type
+#endif
+#ifndef YYLTYPE
+# define YYLTYPE yy::parser::location_type
+#endif
 %}
 
 %option yylineno
