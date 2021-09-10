@@ -86,3 +86,5 @@ add_executable(aidl_unittests
   "type_java_unittest.cpp"
 )
 target_link_libraries(aidl_unittests aidl-common base gmock gtest)
+
+gtest_discover_tests(aidl_unittests)
